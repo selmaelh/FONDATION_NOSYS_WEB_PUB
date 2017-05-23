@@ -34,7 +34,7 @@ File: Layout CSS
 
 /* Header
 --------------------------------------------------------------------------------------------------------------- */
-#header{padding:50px 0;}
+#header{padding:30px 0;}
 
 #header #logo *{margin:0; padding:0; line-height:1;}
 #header #logo h1{margin-top:8px; font-size:24px;}

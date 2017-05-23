@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import {RouterModule,Routes,Router,ActivatedRoute} from '@angular/router';
 
 @Component({
-	selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'basic-comp',
+  templateUrl: './basic.component.html'
 })
 
 
-export class AppComponent {
+export class BasicComponent {
 }
