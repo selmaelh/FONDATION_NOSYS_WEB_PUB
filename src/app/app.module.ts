@@ -9,6 +9,9 @@ import { PropositionComponent } from './proposition.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
+import { DatePickerModule } from 'ng2-datepicker';
+
+
 const appRoutes: Routes = [
   { path: '',
     redirectTo: '/basic',
@@ -28,7 +31,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    DatePickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

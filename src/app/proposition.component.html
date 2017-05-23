@@ -20,6 +20,35 @@
 			        </form>
         		</div>
         	</div>
+        	<div class="grey-box-2">
+        		<p class="arrowed-title">
+        			<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+        			<strong>Descriptif du projet :</strong>
+        		</p>
+        		<div class="inbox-form" id="custom-button">
+        			<form method="post" action="#">
+			            <fieldset>
+			            	<select id="select" class="btmspace-15 long-input">
+							  <option value="valeur1">Valeur 1</option> 
+							  <option value="valeur2" selected>Valeur 2</option>
+							  <option value="valeur3">Valeur 3</option>
+							</select>
+			              	<input class="btmspace-15 long-input" type="text" value="" placeholder="Objectif*">
+			              	<input class="btmspace-15 long-input" type="text" value="" placeholder="Type Action*">
+			              	<span>Date prevision</span>&nbsp;&nbsp;&nbsp;&nbsp;<ng2-datepicker [options]="options" [(ngModel)]="date" name="dateprev"></ng2-datepicker>
+			              	<input id="plus-space" class="btmspace-15 long-input" type="text" value="" placeholder="Population cible*">
+			              	<input class="btmspace-15 long-input" type="text" value="" placeholder="Zone géographique*">
+			              	<input class="btmspace-15 long-input" type="text" value="" placeholder="Durée action*">
+			              	<input class="btmspace-15 long-input" type="text" value="" placeholder="Population cible*">
+			              	<input class="btmspace-15 long-input" type="text" value="" placeholder="Budget prévisionnel*">
+			              	<input class="btmspace-15 long-input" type="text" value="" placeholder="Type soutien*">
+			              	<input class="btmspace-15 long-input" type="text" value="" placeholder="Annexe*">
+			              	<input class="btmspace-15 long-input" type="text" value="" placeholder="Etat*">
+			              	 <button type="submit" value="submit">Soumettre</button> 
+			            </fieldset>
+			        </form>
+        		</div>
+        	</div>
         </div>
       </figure>
     </div>
