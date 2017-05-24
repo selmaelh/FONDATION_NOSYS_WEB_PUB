@@ -1,15 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BasicComponent } from './basic.component';
 import { PropositionComponent } from './proposition.component';
-
 import { RouterModule, Routes } from '@angular/router';
-
 import { DatePickerModule } from 'ng2-datepicker';
+import { PropositionService } from './service/proposition.service';
+import { NgUploaderModule } from 'ngx-uploader';
 
 
 const appRoutes: Routes = [
@@ -28,13 +27,16 @@ const appRoutes: Routes = [
     BasicComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    DatePickerModule
+    DatePickerModule,
+    NgUploaderModule
   ],
-  providers: [],
+  providers: [PropositionService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
