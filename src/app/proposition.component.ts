@@ -38,7 +38,7 @@ export class PropositionComponent {
             'typeaction':[''],
             'dateprevision':[''],
             'populationcible':[''],
-            'zonegeographique':[''],
+            'zonegeographiqe':[''],
             'dureeaction':[''],
             'budgetprevisionnel':[''],
             'typesoutien':[''],

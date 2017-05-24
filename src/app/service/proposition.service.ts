@@ -4,6 +4,8 @@ import { HttpModule } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/Rx';
 
+import { Porteur } from './porteur';
+
 @Injectable()
 export class PropositionService {
 
@@ -17,6 +19,11 @@ export class PropositionService {
     }
 
     saveFormElements(dto){
+
+        let headers = new Headers();
+        headers.append("Content-Type","application/json");  
+        let options = new RequestOptions({headers: headers});            
+
         console.log("Form elements :"+JSON.stringify(dto));
         // make porteur Object
         let porteur = { "nom": dto.nom,
@@ -26,33 +33,53 @@ export class PropositionService {
                         };
         console.log("Porteur projet :"+JSON.stringify(porteur));
 
+        // save porteur
+        let resultat = this.savePorteurProjet(porteur);
+
+        console.log("resultat :" + resultat);
+
         // make proposition Object
-        let proposition = { "thematique": dto.thematique.intitule,
+        let proposition = { "thematique": dto.thematique,
                             "objectif" : dto.objectif,
-                            "typeaction" : dto.typeaction,
-                            "dateprevision" : dto.dateprevision.formatted,
-                            "populationcible": dto.populationcible,
-                            "zonegeographique" : dto.zonegeographique,
-                            "dureeaction" : dto.dureeaction,
-                            "budgetprevisionnel" : dto.budgetprevisionnel,
-                            "typesoutien": dto.typesoutien,
+                            "typeAction" : dto.typeaction,
+                            "datePrevision" : dto.dateprevision.formatted,
+                            "populationCible": dto.populationcible,
+                            "zoneGeographiqe" : dto.zonegeographiqe,
+                            "dureeAction" : dto.dureeaction,
+                            "budgetPrevisionnel" : dto.budgetprevisionnel,
+                            "typeSoutien": dto.typesoutien,
                             "annexe" : dto.annexe,
-                            "etat" : dto.etat
+                            "etat" : dto.etat,
+                            "porteurProjet":resultat
                             };
 
-        console.log("Proposition :"+JSON.stringify(proposition));
+        //console.log("Proposition :"+JSON.stringify(proposition));
 
         // save elements
-        this.savePorteurProjet(porteur);
-        return this.http.post(this.APIURL+'/public/addProposition',proposition)
-            .map(response => response.json()
-            );
+        
+        return this.http.post(this.APIURL+'/public/addProposition',proposition,options)
+            .map(response => response.json())
+            .subscribe();
     }
 
-    savePorteurProjet(porteur){
-        return this.http.post(this.APIURL+'/public/addPorteurProjet',porteur)
-            .map(response => response.json()
-            );
-    }
+
+    savePorteurProjet(porteur) {
+
+        let headers = new Headers();
+        headers.append("Content-Type","application/json");  
+        let options = new RequestOptions({headers: headers});            
+
+
+        return this.http.post(this.APIURL+'/public/addPorteurProjet',porteur,options)
+            .map(response =>
+            {
+                // return array of objects
+                var res = response.json();
+                var result = <Porteur>response.json();
+                return result;
+            }
+                )
+            .subscribe();    
+        }
 
 }

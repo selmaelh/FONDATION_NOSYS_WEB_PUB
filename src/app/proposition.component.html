@@ -49,7 +49,7 @@
 			              	<input id="plus-space" class="btmspace-15 long-input" type="text" value="" 
 			              	       placeholder="Population cible*" [formControl]="form.controls['populationcible']">
 			              	<input class="btmspace-15 long-input" type="text" value="" 
-			              		   placeholder="Zone géographique*" [formControl]="form.controls['zonegeographique']">
+			              		   placeholder="Zone géographique*" [formControl]="form.controls['zonegeographiqe']">
 			              	<input class="btmspace-15 long-input" type="text" value="" 
 			              		   placeholder="Durée action*" [formControl]="form.controls['dureeaction']">
 			              	<input class="btmspace-15 long-input" type="text" 
@@ -65,7 +65,7 @@
 			              	<!-- upload start -->
 								<label class="upload-button">
 								  <input id="file-upl" type="file" ngFileSelect (uploadOutput)="onUploadOutput($event)" 
-								  [uploadInput]="uploadInput" multiple [formControl]="form.controls['annexe']">
+								  [uploadInput]="uploadInput" multiple>
 								  <input id="file-upl" type="button" class="start-upload-btn cstm-btn" 
 								  (click)="startUpload()" value="upload"/>
 								</label>
