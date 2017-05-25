@@ -29,7 +29,7 @@ export class PropositionComponent {
 
   fileName : string = "";
 
-  constructor(formBuilder: FormBuilder, private propositionService: PropositionService) {
+  constructor(formBuilder: FormBuilder, private propositionService: PropositionService,private router:Router) {
 	  moment.locale('fr');
     this.options = {
 			  locale: "fr",
@@ -109,7 +109,7 @@ export class PropositionComponent {
           this.propositionService.saveProposition(proposition).subscribe(
             proposition => {
               $('#btnSubmit').click();
-              console.log("Form Submitted !")
+               this.router.navigate(['/basic']);
             }
           )
       }
