@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers,RequestOptions} from '@angular/http';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/Rx';
 
@@ -10,6 +10,8 @@ import { Porteur } from './porteur';
 export class PropositionService {
 
     APIURL = 'http://localhost:8080/fondation'; 
+
+    postResponse : Porteur = new Porteur();
 
     constructor(private http: Http){}
     
@@ -31,12 +33,13 @@ export class PropositionService {
                         "email" : dto.email,
                         "numeroTelephone" : dto.telephone
                         };
+
         console.log("Porteur projet :"+JSON.stringify(porteur));
 
-        // save porteur
-        let resultat = this.savePorteurProjet(porteur);
+        // saving porteur
+        this.savePorteurProjet(porteur);
 
-        console.log("resultat :" + resultat);
+        console.log("*** "+this.postResponse.getIdPorteur());
 
         // make proposition Object
         let proposition = { "thematique": dto.thematique,
@@ -50,16 +53,11 @@ export class PropositionService {
                             "typeSoutien": dto.typesoutien,
                             "annexe" : dto.annexe,
                             "etat" : dto.etat,
-                            "porteurProjet":resultat
+                            "porteurProjet":this.postResponse
                             };
 
-        //console.log("Proposition :"+JSON.stringify(proposition));
-
-        // save elements
-        
-        return this.http.post(this.APIURL+'/public/addProposition',proposition,options)
-            .map(response => response.json())
-            .subscribe();
+        // saving proposition
+        this.saveProposition(proposition);
     }
 
 
@@ -71,15 +69,19 @@ export class PropositionService {
 
 
         return this.http.post(this.APIURL+'/public/addPorteurProjet',porteur,options)
-            .map(response =>
-            {
-                // return array of objects
-                var res = response.json();
-                var result = <Porteur>response.json();
-                return result;
-            }
-                )
-            .subscribe();    
+                        .map((res: Response) => res.json())
+                        .subscribe((res:Porteur) => this.postResponse = res);
+        }
+
+    saveProposition(proposition) {
+
+        let headers = new Headers();
+        headers.append("Content-Type","application/json");  
+        let options = new RequestOptions({headers: headers});            
+
+
+        return this.http.post(this.APIURL+'/public/addProposition',proposition,options)
+                        .map((res: Response) => res.json());
         }
 
 }
