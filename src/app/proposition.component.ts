@@ -5,6 +5,7 @@ import {PropositionService} from './service/proposition.service';
 import { DatePickerOptions, DateModel } from 'ng2-datepicker';
 import {FormGroup,FormBuilder} from "@angular/forms";
 import * as moment from 'moment';
+import * as $ from 'jquery';
 
 @Component({
   templateUrl: './proposition.component.html'
@@ -18,6 +19,7 @@ export class PropositionComponent {
   options: DatePickerOptions;
   thematiques;
 
+  formData: FormData;
   files: UploadFile[];
   uploadInput: EventEmitter<UploadInput>;
   humanizeBytes: Function;
@@ -28,11 +30,12 @@ export class PropositionComponent {
   fileName : string = "";
 
   constructor(formBuilder: FormBuilder, private propositionService: PropositionService) {
-	moment.locale('fr');
+	  moment.locale('fr');
     this.options = {
 			  locale: "fr",
 			};
-	this.form = formBuilder.group({
+
+	  this.form = formBuilder.group({
             'nom' : [''],
             'prenom' : [''],
             'email' : [''],
@@ -51,13 +54,24 @@ export class PropositionComponent {
         });
 
 		this.files = []; // local uploading files array
-	    this.uploadInput = new EventEmitter<UploadInput>(); // input events, we use this to emit data to ngx-uploader
-	    this.humanizeBytes = humanizeBytes;
+	  this.uploadInput = new EventEmitter<UploadInput>(); // input events, we use this to emit data to ngx-uploader
+	  this.humanizeBytes = humanizeBytes;
 	}
 
   ngOnInit(){
         this.getAllThematiques();
     }
+
+     addScripts(chemin){
+    var script = document.createElement( 'script' );
+    script.type = 'text/javascript';
+    script.src = chemin;
+    $("body").append( script );
+  }
+
+  ngAfterViewInit(){
+        this.addScripts('assets/js/submitAnnexe.js');       
+  }
 
   getAllThematiques(){
       this.propositionService.getAllThematiques().subscribe(thematique => {
@@ -88,12 +102,13 @@ export class PropositionComponent {
                             "dureeAction" : dto.dureeaction,
                             "budgetPrevisionnel" : dto.budgetprevisionnel,
                             "typeSoutien": dto.typesoutien,
-                            "annexe" : this.fileName,
+                            "annexe" : $('#file').val(),
                             "etat" : dto.etat,
                             "porteurProjet":porteur
-                          };
+                              };
           this.propositionService.saveProposition(proposition).subscribe(
             proposition => {
+              $('#btnSubmit').click();
               console.log("Form Submitted !")
             }
           )
