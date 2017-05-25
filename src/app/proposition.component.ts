@@ -68,10 +68,10 @@ export class PropositionComponent {
   onSubmit(dto){
   	//this.propositionService.saveFormElements(dto);
     let porteur = { "nom": dto.nom,
-                        "prenom" : dto.prenom,
-                        "email" : dto.email,
-                        "numeroTelephone" : dto.telephone
-                      };
+                    "prenom" : dto.prenom,
+                    "email" : dto.email,
+                    "numeroTelephone" : dto.telephone
+                  };
                       
     this.propositionService.savePorteurProjet(porteur).subscribe(
       porteur => {

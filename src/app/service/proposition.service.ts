@@ -20,47 +20,6 @@ export class PropositionService {
                .map(response => response.json());
     }
 
-    saveFormElements(dto){
-
-        let headers = new Headers();
-        headers.append("Content-Type","application/json");  
-        let options = new RequestOptions({headers: headers});            
-
-        console.log("Form elements :"+JSON.stringify(dto));
-        // make porteur Object
-        let porteur = { "nom": dto.nom,
-                        "prenom" : dto.prenom,
-                        "email" : dto.email,
-                        "numeroTelephone" : dto.telephone
-                        };
-
-        console.log("Porteur projet :"+JSON.stringify(porteur));
-
-        // saving porteur
-        this.savePorteurProjet(porteur);
-
-        console.log("*** "+this.postResponse.getIdPorteur());
-
-        // make proposition Object
-        let proposition = { "thematique": dto.thematique,
-                            "objectif" : dto.objectif,
-                            "typeAction" : dto.typeaction,
-                            "datePrevision" : dto.dateprevision.formatted,
-                            "populationCible": dto.populationcible,
-                            "zoneGeographiqe" : dto.zonegeographiqe,
-                            "dureeAction" : dto.dureeaction,
-                            "budgetPrevisionnel" : dto.budgetprevisionnel,
-                            "typeSoutien": dto.typesoutien,
-                            "annexe" : dto.annexe,
-                            "etat" : dto.etat,
-                            "porteurProjet":this.postResponse
-                            };
-
-        // saving proposition
-        this.saveProposition(proposition);
-    }
-
-
     savePorteurProjet(porteur) {
 
         let headers = new Headers();
