@@ -64,10 +64,11 @@
 
 			              	<!-- upload start -->
 								<label class="upload-button">
-								  <input id="file-upl" type="file" ngFileSelect (uploadOutput)="onUploadOutput($event)" 
-								  [uploadInput]="uploadInput" multiple>
+								  <input id="file-upl1" type="file" ngFileSelect (uploadOutput)="onUploadOutput($event)" 
+								  [uploadInput]="uploadInput" [formControl]="form.controls['annexe']" multiple>
 								  <input id="file-upl" type="button" class="start-upload-btn cstm-btn" 
 								  (click)="startUpload()" value="upload"/>
+								  &nbsp;&nbsp;&nbsp;<i *ngIf="showCheck" id="green-icon" class="fa fa-check-circle-o" aria-hidden="true"></i>
 								</label>
 			              	<!--  upload end-->
 			              

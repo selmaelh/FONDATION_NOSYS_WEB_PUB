@@ -23,6 +23,10 @@ export class PropositionComponent {
   humanizeBytes: Function;
   dragOver: boolean;
  
+  showCheck : boolean = false;
+
+  fileName : string = "";
+
   constructor(formBuilder: FormBuilder, private propositionService: PropositionService) {
 	moment.locale('fr');
     this.options = {
@@ -84,7 +88,7 @@ export class PropositionComponent {
                             "dureeAction" : dto.dureeaction,
                             "budgetPrevisionnel" : dto.budgetprevisionnel,
                             "typeSoutien": dto.typesoutien,
-                            "annexe" : dto.annexe,
+                            "annexe" : this.fileName,
                             "etat" : dto.etat,
                             "porteurProjet":porteur
                           };
@@ -101,7 +105,9 @@ export class PropositionComponent {
 
 
   onUploadOutput(output: UploadOutput): void {
-    console.log(output); // lets output to see what's going on in the console
+    console.log("output file name");
+    console.log(output.file.name); // lets output to see what's going on in the console
+    this.fileName = output.file.name;
 
     if (output.type === 'allAddedToQueue') { // when all files added in queue
       // uncomment this if you want to auto upload files when added
@@ -141,6 +147,7 @@ export class PropositionComponent {
     }
 
     this.uploadInput.emit(event);
+    this.showCheck = true;
   }
 
   cancelUpload(id: string): void {
