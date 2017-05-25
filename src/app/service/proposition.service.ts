@@ -69,8 +69,7 @@ export class PropositionService {
 
 
         return this.http.post(this.APIURL+'/public/addPorteurProjet',porteur,options)
-                        .map((res: Response) => res.json())
-                        .subscribe((res:Porteur) => this.postResponse = res);
+                        .map((res: Response) => res.json());
         }
 
     saveProposition(proposition) {

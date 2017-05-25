@@ -66,7 +66,37 @@ export class PropositionComponent {
   }
 
   onSubmit(dto){
-  	this.propositionService.saveFormElements(dto);
+  	//this.propositionService.saveFormElements(dto);
+    let porteur = { "nom": dto.nom,
+                        "prenom" : dto.prenom,
+                        "email" : dto.email,
+                        "numeroTelephone" : dto.telephone
+                      };
+                      
+    this.propositionService.savePorteurProjet(porteur).subscribe(
+      porteur => {
+        let proposition = { "thematique": dto.thematique,
+                            "objectif" : dto.objectif,
+                            "typeAction" : dto.typeaction,
+                            "datePrevision" : dto.dateprevision.formatted,
+                            "populationCible": dto.populationcible,
+                            "zoneGeographiqe" : dto.zonegeographiqe,
+                            "dureeAction" : dto.dureeaction,
+                            "budgetPrevisionnel" : dto.budgetprevisionnel,
+                            "typeSoutien": dto.typesoutien,
+                            "annexe" : dto.annexe,
+                            "etat" : dto.etat,
+                            "porteurProjet":porteur
+                          };
+          this.propositionService.saveProposition(proposition).subscribe(
+            proposition => {
+              console.log("Form Submitted !")
+            }
+          )
+      }
+    )
+
+
 	}
 
 
