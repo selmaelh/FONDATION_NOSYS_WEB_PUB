@@ -3,9 +3,10 @@ import { UploadOutput, UploadInput, UploadFile, humanizeBytes } from 'ngx-upload
 import {RouterModule,Routes,Router} from '@angular/router';
 import {PropositionService} from './service/proposition.service';
 import { DatePickerOptions, DateModel } from 'ng2-datepicker';
-import {FormGroup,FormBuilder} from "@angular/forms";
+import {FormGroup,FormBuilder,Validators,AbstractControl} from "@angular/forms";
 import * as moment from 'moment';
 import * as $ from 'jquery';
+import {FormValidator} from  './validator/formvalidator';
 
 @Component({
   templateUrl: './proposition.component.html'
@@ -29,6 +30,9 @@ export class PropositionComponent {
 
   fileName : string = "";
 
+  myEmail: AbstractControl;
+  myPhone: AbstractControl;
+
   constructor(formBuilder: FormBuilder, private propositionService: PropositionService,private router:Router) {
 	  moment.locale('fr');
     this.options = {
@@ -36,22 +40,27 @@ export class PropositionComponent {
 			};
 
 	  this.form = formBuilder.group({
-            'nom' : [''],
-            'prenom' : [''],
-            'email' : [''],
-            'telephone' : [''],
-            'thematique':[''],
-            'objectif':[''],
-            'typeaction':[''],
-            'dateprevision':[''],
-            'populationcible':[''],
-            'zonegeographiqe':[''],
-            'dureeaction':[''],
-            'budgetprevisionnel':[''],
-            'typesoutien':[''],
-            'annexe':[''],
-            'etat':['']
+            'nom' : ['', Validators.required],
+            'prenom' : ['', Validators.required],
+            'email' : ['', Validators.compose([Validators.required, FormValidator.isValidMailFormat])],
+            'telephone' : ['', Validators.compose([Validators.required,FormValidator.isAPhoneNumber])],
+            'thematique':['', Validators.required],
+            'objectif':['', Validators.required],
+            'typeaction':['', Validators.required],
+            'dateprevision':['', Validators.required],
+            'populationcible':['', Validators.required],
+            'zonegeographiqe':['', Validators.required],
+            'dureeaction':['', Validators.required],
+            'budgetprevisionnel':['', Validators.required],
+            'typesoutien':['', Validators.required],
+            'annexe':['', Validators.required],
+            'etat':['', Validators.required]
         });
+
+    // This is our new property, which we will access from the template
+    this.myEmail = this.form.controls['email'];
+    this.myPhone = this.form.controls['telephone'];
+
 
 		this.files = []; // local uploading files array
 	  this.uploadInput = new EventEmitter<UploadInput>(); // input events, we use this to emit data to ngx-uploader

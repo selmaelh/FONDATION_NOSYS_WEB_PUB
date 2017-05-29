@@ -16,12 +16,21 @@
 			            <fieldset>
 			              <input class="btmspace-15 long-input" type="text" 
 			              	     value="" placeholder="Nom*" [formControl]="form.controls['nom']">
+			              	         <!-- <pre> {{ form.controls['nom'].valid }} </pre> -->
 			              <input class="btmspace-15 long-input" type="text" 
 			              	     value="" placeholder="Prenom*" [formControl]="form.controls['prenom']">
-			              <input class="btmspace-15 long-input" type="text" 
+			              <div>
+			              	<input class="btmspace-15 long-input" type="text" 
 			              	     value="" placeholder="Email*" [formControl]="form.controls['email']">
-			              <input class="btmspace-15 long-input" type="text" 
+			              	     <span class="red-warning" *ngIf="!myEmail.valid && myEmail.dirty">
+			              	     	Email invalide !</span>
+			              </div>
+			              <div>
+			              	<input class="btmspace-15 long-input" type="text" 
 			              	     value="" placeholder="Tel*" [formControl]="form.controls['telephone']">
+			              	     <span class="red-warning" *ngIf="!myPhone.valid && myPhone.dirty">
+			              	     	Numero invalide !</span>
+			              </div>
 			            </fieldset>
 			        <!-- </form> -->
         		</div>
@@ -37,7 +46,7 @@
 			            	<select id="select" class="btmspace-15 long-input"
 			            			#t (change)="displayTheme(t.value)" name="themes" 
 			            			[formControl]="form.controls['thematique']">
-			            	  <option value="default">--Thématique--</option>
+			            	  <option value="default">-- ChoisirThématique--</option>
 							  <option *ngFor="let thematique of thematiques" [ngValue]="thematique">
 							  	{{thematique.intitule}}</option>
 							</select>
@@ -45,7 +54,9 @@
 			              		   value="" placeholder="Objectif*" [formControl]="form.controls['objectif']">
 			              	<input class="btmspace-15 long-input" type="text"
 			              	       value="" placeholder="Type Action*" [formControl]="form.controls['typeaction']">
+			              	<p></p>
 			              	<span>Date prevision</span>&nbsp;&nbsp;&nbsp;&nbsp;<ng2-datepicker [options]="options" [(ngModel)]="date" name="dateprev" [formControl]="form.controls['dateprevision']"></ng2-datepicker>
+			              	<p></p>
 			              	<input id="plus-space" class="btmspace-15 long-input" type="text" value="" 
 			              	       placeholder="Population cible*" [formControl]="form.controls['populationcible']">
 			              	<input class="btmspace-15 long-input" type="text" value="" 
@@ -83,6 +94,8 @@
         		</div>
         	</div>
         	</form>
+
         </div>
       </figure>
     </div>
+

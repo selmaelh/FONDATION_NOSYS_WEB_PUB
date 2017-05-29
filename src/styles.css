@@ -342,6 +342,7 @@ body {
 
 .long-input{
   width: 50%;
+  display: inline;
   }  
 
 #custom-button button{
@@ -382,4 +383,8 @@ body {
 
 #green-icon{
   color: #1ab394;
+}
+
+.red-warning{
+  color:red;
 }
