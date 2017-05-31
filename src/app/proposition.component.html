@@ -15,19 +15,19 @@
         			<!-- <form method="post" action="#"> -->
 			            <fieldset>
 			              <input class="btmspace-15 long-input" type="text" 
-			              	     value="" placeholder="Nom*" [formControl]="form.controls['nom']">
+			              	     value="" placeholder="Nom*" [formControl]="form.controls['nom']" required>
 			              	         <!-- <pre> {{ form.controls['nom'].valid }} </pre> -->
 			              <input class="btmspace-15 long-input" type="text" 
-			              	     value="" placeholder="Prenom*" [formControl]="form.controls['prenom']">
+			              	     value="" placeholder="Prenom*" [formControl]="form.controls['prenom']" required>
 			              <div>
 			              	<input class="btmspace-15 long-input" type="text" 
-			              	 	   value="" placeholder="Email*" [formControl]="form.controls['email']">
+			              	 	   value="" placeholder="Email*" [formControl]="form.controls['email']" required>
 			              	<span class="red-warning" *ngIf="!myEmail.valid && myEmail.dirty">
 			              	     	Email invalide !</span>
 			              </div>
 			              <div>
 			              	<input class="btmspace-15 long-input" type="text" 
-			              	       value="" placeholder="Tel*" [formControl]="form.controls['telephone']">
+			              	       value="" placeholder="Tel*" [formControl]="form.controls['telephone']" required>
 			                <span class="red-warning" *ngIf="!myPhone.valid && myPhone.dirty">
 			              	     	Numero invalide !</span>
 			              </div>
@@ -45,26 +45,26 @@
 			            <fieldset>
 			            	<select id="select" class="btmspace-15 long-input"
 			            			#t (change)="displayTheme(t.value)" name="themes" 
-			            			[formControl]="form.controls['thematique']">
+			            			[formControl]="form.controls['thematique']" required>
 			            	  <option value="default">-- Choisir Thématique--</option>
 							  <option *ngFor="let thematique of thematiques" [ngValue]="thematique">
 							  	{{thematique.intitule}}</option>
 							</select>
 			              	<input class="btmspace-15 long-input" type="text" 
-			              		   value="" placeholder="Objectif*" [formControl]="form.controls['objectif']">
+			              		   value="" placeholder="Objectif*" [formControl]="form.controls['objectif']" required>
 			              	<input class="btmspace-15 long-input" type="text"
-			              	       value="" placeholder="Type Action*" [formControl]="form.controls['typeaction']">
+			              	       value="" placeholder="Type Action*" [formControl]="form.controls['typeaction']" required>
 			              	<p></p>
-			              	<span>Date prevision</span>&nbsp;&nbsp;&nbsp;&nbsp;<ng2-datepicker [options]="options" [(ngModel)]="date" name="dateprev" [formControl]="form.controls['dateprevision']"></ng2-datepicker>
+			              	<span>Date prevision</span>&nbsp;&nbsp;&nbsp;&nbsp;<ng2-datepicker [options]="options" [(ngModel)]="date" name="dateprev" [formControl]="form.controls['dateprevision']" required></ng2-datepicker>
 			              	<p></p>
 			              	<input id="plus-space" class="btmspace-15 long-input" type="text" value="" 
-			              	       placeholder="Population cible*" [formControl]="form.controls['populationcible']">
+			              	       placeholder="Population cible*" [formControl]="form.controls['populationcible']" required>
 			              	<input class="btmspace-15 long-input" type="text" value="" 
-			              		   placeholder="Zone géographique*" [formControl]="form.controls['zonegeographiqe']">
+			              		   placeholder="Zone géographique*" [formControl]="form.controls['zonegeographiqe']" required>
 
 			                <div>
 			              	<input class="btmspace-15 long-input" type="text" value="" 
-			              		   placeholder="Durée action*" [formControl]="form.controls['dureeaction']">
+			              		   placeholder="Durée action*" [formControl]="form.controls['dureeaction']" required>
 			                <span class="red-warning" *ngIf="!myDuree.valid && myDuree.dirty && myDuree.untouched">
 			              	     	Veuillez exprimer la durée en chiffres !</span>
 			                </div>
@@ -76,11 +76,11 @@
 			              	     	Veuillez exprimer le budget en chiffres !</span>
 			                </div>
 			              	<input class="btmspace-15 long-input" type="text" 
-			              		   value="" placeholder="Type soutien*" [formControl]="form.controls['typesoutien']">
+			              		   value="" placeholder="Type soutien*" [formControl]="form.controls['typesoutien']" required>
 			              	<!-- <input class="btmspace-15 long-input" type="text" 
 			              		    value="" placeholder="Annexe*" [formControl]="form.controls['annexe']"> -->
 			              	<input id="plus-space" class="btmspace-15 long-input" type="text" 
-			              		   value="" placeholder="Etat*" [formControl]="form.controls['etat']">
+			              		   value="" placeholder="Etat*" [formControl]="form.controls['etat']" required>
 
 			              	<!-- upload start -->
 								<!--<label class="upload-button">

@@ -42,21 +42,21 @@ export class PropositionComponent {
 			};
 
 	  this.form = formBuilder.group({
-            'nom' : ['', Validators.required],
-            'prenom' : ['', Validators.required],
-            'email' : ['', Validators.compose([Validators.required, FormValidator.isValidMailFormat])],
-            'telephone' : ['', Validators.compose([Validators.required,FormValidator.isAPhoneNumber])],
-            'thematique':['', Validators.required],
-            'objectif':['', Validators.required],
-            'typeaction':['', Validators.required],
-            'dateprevision':['', Validators.required],
-            'populationcible':['', Validators.required],
-            'zonegeographiqe':['', Validators.required],
-            'dureeaction':['', Validators.compose([Validators.required,FormValidator.isAValidNumber])],
-            'budgetprevisionnel':['', Validators.compose([Validators.required,FormValidator.isAValidNumber])],
-            'typesoutien':['', Validators.required],
-            'annexe':['', Validators.required],
-            'etat':['', Validators.required]
+            'nom' : [''],
+            'prenom' : [''],
+            'email' : ['', Validators.compose([FormValidator.isValidMailFormat])],
+            'telephone' : ['', Validators.compose([FormValidator.isAPhoneNumber])],
+            'thematique':[''],
+            'objectif':[''],
+            'typeaction':[''],
+            'dateprevision':[''],
+            'populationcible':[''],
+            'zonegeographiqe':[''],
+            'dureeaction':['', Validators.compose([FormValidator.isAValidNumber])],
+            'budgetprevisionnel':['', Validators.compose([FormValidator.isAValidNumber])],
+            'typesoutien':[''],
+            'annexe':[''],
+            'etat':['']
         });
 
     // This is our new property, which we will access from the template
@@ -97,6 +97,7 @@ export class PropositionComponent {
 
   onSubmit(dto){
   	//this.propositionService.saveFormElements(dto);
+    console.log(' HERRE !!! ');
     let porteur = { "nom": dto.nom,
                     "prenom" : dto.prenom,
                     "email" : dto.email,
