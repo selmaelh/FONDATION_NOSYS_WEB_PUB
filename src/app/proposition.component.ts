@@ -32,6 +32,8 @@ export class PropositionComponent {
 
   myEmail: AbstractControl;
   myPhone: AbstractControl;
+  myDuree: AbstractControl;
+  myBudget: AbstractControl;
 
   constructor(formBuilder: FormBuilder, private propositionService: PropositionService,private router:Router) {
 	  moment.locale('fr');
@@ -50,8 +52,8 @@ export class PropositionComponent {
             'dateprevision':['', Validators.required],
             'populationcible':['', Validators.required],
             'zonegeographiqe':['', Validators.required],
-            'dureeaction':['', Validators.required],
-            'budgetprevisionnel':['', Validators.required],
+            'dureeaction':['', Validators.compose([Validators.required,FormValidator.isAValidNumber])],
+            'budgetprevisionnel':['', Validators.compose([Validators.required,FormValidator.isAValidNumber])],
             'typesoutien':['', Validators.required],
             'annexe':['', Validators.required],
             'etat':['', Validators.required]
@@ -60,7 +62,8 @@ export class PropositionComponent {
     // This is our new property, which we will access from the template
     this.myEmail = this.form.controls['email'];
     this.myPhone = this.form.controls['telephone'];
-
+    this.myDuree = this.form.controls['dureeaction'];
+    this.myBudget = this.form.controls['budgetprevisionnel'];
 
 		this.files = []; // local uploading files array
 	  this.uploadInput = new EventEmitter<UploadInput>(); // input events, we use this to emit data to ngx-uploader

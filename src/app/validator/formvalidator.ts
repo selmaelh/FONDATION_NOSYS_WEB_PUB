@@ -20,4 +20,11 @@ export class FormValidator {
     	return { "Please provide a valid phone number": true };
     }
 
+    static isAValidNumber(control:FormControl){
+    	if(!isNaN(parseFloat(control.value)) && isFinite(control.value)){
+    		return null;
+    	}
+    	return { "Please provide a valid duration": true };
+    }
+
 }
