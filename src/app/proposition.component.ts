@@ -97,6 +97,7 @@ export class PropositionComponent {
 
   onSubmit(dto){
   	//this.propositionService.saveFormElements(dto);
+    console.log(' HERRE !!! ');
     let porteur = { "nom": dto.nom,
                     "prenom" : dto.prenom,
                     "email" : dto.email,
