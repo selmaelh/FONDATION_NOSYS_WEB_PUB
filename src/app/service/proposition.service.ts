@@ -42,4 +42,10 @@ export class PropositionService {
                         .map((res: Response) => res.json());
         }
 
+
+         getAllVisiblePublications(){        
+            return this.http.get(this.APIURL+'/public/visiblePublications')
+            .map(response => response.json()
+            );  
+        }
 }

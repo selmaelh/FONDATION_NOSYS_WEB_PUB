@@ -22,7 +22,7 @@
 			              <div>
 			              	<input class="btmspace-15 long-input" type="text" 
 			              	 	   value="" placeholder="Email*" [formControl]="form.controls['email']" required>
-			              	<span class="red-warning" *ngIf="!myEmail.valid && myEmail.dirty">
+			              	<span class="alert alert-danger" *ngIf="!myEmail.valid && myEmail.dirty">
 			              	     	Email invalide !</span>
 			              </div>
 			              <div>

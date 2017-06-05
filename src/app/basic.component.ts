@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {RouterModule,Routes,Router,ActivatedRoute} from '@angular/router';
+import {PropositionService} from './service/proposition.service'
 
 @Component({
   selector: 'basic-comp',
@@ -8,4 +9,19 @@ import {RouterModule,Routes,Router,ActivatedRoute} from '@angular/router';
 
 
 export class BasicComponent {
+
+  publications;
+  constructor(private propositionService:PropositionService){}
+
+  ngOnInit(){
+    this.getVisiblePublications();
+  }
+
+  getVisiblePublications(){
+    this.propositionService.getAllVisiblePublications().subscribe(
+      publications => {
+        this.publications = publications;
+      }
+    )
+  }
 }
