@@ -13,6 +13,7 @@ body {
 	font-family: "JosefinSans";
 }
 
+
 .heading{
 	font-family: "JosefinSans";	
 }
@@ -24,6 +25,10 @@ body {
 
 #nav_ul{
     margin-left: 15%;
+}
+.p{
+  text-align: center;
+  font-family: "JosefinSans";
 }
 
 /*TIMELINE*/
@@ -87,6 +92,7 @@ body {
   border-right: 0 solid #ccc;
   border-bottom: 15px solid transparent;
   content: " ";
+  text-align: center;
 }
 .timeline > li > .timeline-panel:after {
   position: absolute;
