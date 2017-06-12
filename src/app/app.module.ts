@@ -12,11 +12,6 @@ import { NgUploaderModule } from 'ngx-uploader';
 import { PresidentWordComponent} from './presidentword.component';
 import {QuiSomNousComponent} from './quisomnous.component';
 import {AgirComponent} from './agir.component';
-import {EvenementunComponent} from './evenementun.component';
-import {EvenementdeuxComponent} from './evenementdeux.component';
-import {EvenementtroisComponent} from './evenementtrois.component';
-import {EvenementquatreComponent} from './evenementquatre.component';
-import {EvenementcinqComponent} from './evenementcinq.component';
 import {DomunComponent} from './domun.component';
 import {DomtroisComponent} from './domtrois.component';
 import {DomquatreComponent} from './domquatre.component';
@@ -33,11 +28,6 @@ const appRoutes: Routes = [
   { path: 'presidentword', component : PresidentWordComponent},
   { path: 'quisommenous' , component : QuiSomNousComponent},
   { path: 'agir' , component : AgirComponent},
-  { path: 'evun' , component : EvenementunComponent},
-  { path: 'evdeux' , component : EvenementdeuxComponent},
-  { path: 'evtrois' , component : EvenementtroisComponent},
-  { path: 'evquatre' , component : EvenementquatreComponent},
-  { path: 'evcinq' , component : EvenementcinqComponent},
   { path: 'domun' , component : DomunComponent},
   { path: 'domtrois' , component : DomtroisComponent},
   { path: 'domquatre' , component : DomquatreComponent},
@@ -52,11 +42,6 @@ const appRoutes: Routes = [
     PresidentWordComponent,
     QuiSomNousComponent,
     AgirComponent,
-    EvenementunComponent,
-    EvenementdeuxComponent,
-    EvenementtroisComponent,
-    EvenementquatreComponent,
-    EvenementcinqComponent,
     DomunComponent,
     DomtroisComponent,
     DomquatreComponent,
