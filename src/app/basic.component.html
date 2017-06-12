@@ -53,23 +53,24 @@
           <h6 class="heading">Evenements</h6>
         </figcaption>
         <div class="container" id="timeline_container">
-          <ul  *ngFor="let publication of publications">
-            <li   [ngClass]="{'timeline':publication.idPublication%2 === 0, 'timeline-inverted':publication.idPublication%2 === 1}" >
+          <ul class="timeline" >
+            <li *ngFor="let publication of publications"  [ngClass]="{'timeline':publication.idPublication%2 === 0, 'timeline-inverted':publication.idPublication%2 === 1}" >
               <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
-                  <img class="img-responsive"
+                  <img class="img-responsive" style="float: left" 
                   src="http://localhost:8080/fondation/public/getPublictionImage?idPublication={{publication?.idPublication}}"
                                                />
                 </div> 
-                <div class="timeline-title">
+                <div class="timeline-title" style="width: 85px;float: left;margin-left: 10px">
                   <p>{{publication?.titre}}</p>
-                </div>
-                <div class="timeline-body">
-                  <p>{{publication?.description}}</p>
+                  <div class="test">
+                     <p>{{publication?.description}}</p> 
+                  </div>
                 </div>
               </div>
             </li>
+            
             <li class="clearfix" style="float: none;"></li>
           </ul>
         </div>

@@ -146,8 +146,9 @@ body {
   color: #000 !important;
 }
 .timeline-title {
-  margin-top: 0;
-  color: inherit;
+      color: darkgreen;
+    font-family: "Amatic SC",cursive;
+    font-weight: 700;
 }
 .timeline-body > p,
 .timeline-body > ul {
@@ -393,4 +394,9 @@ body {
 
 .red-warning{
   color:red;
+}
+
+.test{
+  font-family: JosefinSans;
+  color: #000;
 }
