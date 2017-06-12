@@ -53,8 +53,8 @@
           <h6 class="heading">Evenements</h6>
         </figcaption>
         <div class="container" id="timeline_container">
-          <ul class="timeline" >
-            <li *ngFor="let publication of publications">
+          <ul  *ngFor="let publication of publications">
+            <li   [ngClass]="{'timeline':publication.idPublication%2 === 0, 'timeline-inverted':publication.idPublication%2 === 1}" >
               <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
@@ -67,20 +67,6 @@
                 </div>
                 <div class="timeline-body">
                   <p>{{publication?.description}}</p>
-                </div>
-              </div>
-            </li>
-            
-            <li  class="timeline-inverted">
-              <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record invert" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <img class="img-responsive" src="assets/images/02.jpg" />
-                  
-                </div>
-                <div class="timeline-body">
-                  <p>TROPHÉES DE LA FONDATION 5ÈME ÉDITION: LES LAURÉATS</p>
-                 
                 </div>
               </div>
             </li>
